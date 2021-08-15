@@ -18,8 +18,9 @@ ActiveRecord::Schema.define(version: 2021_08_14_205028) do
   create_table "commits", force: :cascade do |t|
     t.string "message"
     t.datetime "timestamp"
-    t.integer "changes"
+    t.integer "stats"
     t.string "url"
+    t.string "sha"
     t.bigint "event_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
