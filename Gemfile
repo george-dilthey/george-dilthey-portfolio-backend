@@ -18,6 +18,7 @@ gem 'puma', '~> 5.0'
 
 gem 'httparty'
 gem 'json'
+gem 'dotenv-rails', groups: [:development, :test]
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

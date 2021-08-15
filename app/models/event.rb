@@ -4,7 +4,8 @@ class Event < ApplicationRecord
 
     def self.get_events
         url = 'https://api.github.com/users/george-dilthey/events/public'
-        response = HTTParty.get(url)
+        auth = {:username => "george-dilthey", :password => ENV['GITHUB_PAT']}
+        response = HTTParty.get(url, :basic_auth => auth)
         result = response.parsed_response 
     end
 
@@ -15,7 +16,9 @@ class Event < ApplicationRecord
                 e.type = event["type"]
                 e.repo_id = event["repo"]["id"]
                 e.timestamp = event["created_at"]
-            end 
+            end
+            
+            Commit.create_from_event(event) 
         end    
     end
 
